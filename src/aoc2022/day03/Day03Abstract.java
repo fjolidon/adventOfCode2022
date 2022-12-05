@@ -23,36 +23,32 @@ public abstract class Day03Abstract<G extends Group, R extends Rucksack> extends
     }
 
     private void runSolutionOnlyFirstPart(File input) throws IOException {
-        sumPartA = getInputStream(input).map(
-                rucksackConstructor
-        ).map(
-                R::getCommonItem
-        ).mapToInt(
-                Rucksack.Item::getPriority
-        ).sum();
+        sumPartA = getInputStream(input)
+                .map(rucksackConstructor)
+                .map(R::getCommonItem)
+                .mapToInt(Rucksack.Item::getPriority)
+                .sum();
         sumPartB = 0;
-        setSolved(true);
+        setSolved();
     }
 
     @Override
     public void runSolution(File input) throws Exception {
         Group.Generator<G, R> groupGenerator = new Group.Generator<>(groupConstructor);
-        sumPartA = getInputStream(input).map(
-                rucksackConstructor
-        ).map(rucksack -> {
+        sumPartA = getInputStream(input)
+                .map(rucksackConstructor)
+                .map(rucksack -> {
                     groupGenerator.add(rucksack);
                     return rucksack.getCommonItem();
-                }
-        ).mapToInt(
-                Rucksack.Item::getPriority
-        ).sum();
+                })
+                .mapToInt(Rucksack.Item::getPriority)
+                .sum();
 
-        sumPartB = groupGenerator.generate().stream().map(
-                G::getCommonItem
-        ).mapToInt(
-                Rucksack.Item::getPriority
-        ).sum();
-        setSolved(true);
+        sumPartB = groupGenerator.generate().stream()
+                .map(G::getCommonItem).mapToInt(Rucksack.Item::getPriority)
+                .sum();
+
+        setSolved();
     }
 
     @Override

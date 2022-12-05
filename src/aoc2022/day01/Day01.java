@@ -49,7 +49,7 @@ public class Day01 extends SolutionFactory {
                 }
 
                 highestXTotals.add(highestTotal);
-                setSolved(true);
+                setSolved();
             } catch(IOException ex) {
                 ex.printStackTrace();
             }
@@ -72,7 +72,7 @@ public class Day01 extends SolutionFactory {
                 }
 
                 checkTotal();
-                setSolved(true);
+                setSolved();
             } catch(IOException ex) {
                 ex.printStackTrace();
             }

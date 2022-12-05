@@ -31,7 +31,7 @@ public class Day04 extends SolutionFactory {
                     }
             );
 
-            setSolved(true);
+            setSolved();
         }
 
         @Override

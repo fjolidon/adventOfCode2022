@@ -32,7 +32,7 @@ public class Day02 extends SolutionFactory {
             } catch(IOException ex) {
                 ex.printStackTrace();
             }
-            setSolved(true);
+            setSolved();
         }
 
         public void runSolutionFirstPart(File input) {

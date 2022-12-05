@@ -12,14 +12,29 @@ public abstract class Solution {
 
     private final int day;
     private boolean solved = false;
+    private long elapsedNanos = 0;
 
     public Solution(int day) {
         this.day = day;
     }
 
     public abstract void runSolution(File input) throws Exception;
+
+    public void runAndWorkbenchSolution(File input) throws Exception {
+        long start = System.nanoTime();
+        runSolution(input);
+        elapsedNanos = System.nanoTime() - start;
+    }
+
+    /**
+     * @return How long the solution needed to run, in nanoseconds.
+     */
+    public long getRunningTime() {
+        return elapsedNanos;
+    }
+
     public void runSolutionWithDefaultInput() throws Exception {
-        runSolution(new File(getPathToDefaultInput()));
+        runAndWorkbenchSolution(new File(getPathToDefaultInput()));
     }
     public void runInThreadWithDefaultInput(Object monitor) {
         runInThread(new File(getPathToDefaultInput()), monitor);
@@ -27,7 +42,7 @@ public abstract class Solution {
     public void runInThread(File input, Object monitor) {
         new Thread(() -> {
             try {
-                runSolution(input);
+                runAndWorkbenchSolution(input);
             } catch(Exception ex) {
                 System.err.println("Solution for day " + getDay() + " has generated an exception");
                 ex.printStackTrace();
@@ -46,8 +61,8 @@ public abstract class Solution {
         getInputStream(input).forEach(consumer);
     }
 
-    protected void setSolved(boolean solved) {
-        this.solved = solved;
+    protected void setSolved() {
+        this.solved = true;
     }
 
     public boolean isSolved() {
@@ -84,6 +99,9 @@ public abstract class Solution {
         System.out.println("Solutions for " + getDayAsString());
         System.out.println(getSolutionA());
         System.out.println(getSolutionB());
+        if (elapsedNanos > 0) {
+            System.out.println("Solution took " + elapsedNanos / 1000 + " microseconds to run.");
+        }
         System.out.println();
     }
 }
