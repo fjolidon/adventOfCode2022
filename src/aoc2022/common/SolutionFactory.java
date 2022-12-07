@@ -1,11 +1,11 @@
 package aoc2022.common;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 
+/**
+ * This can be used to generate an instance of Solution for a given day
+ */
 public abstract class SolutionFactory {
 
     private final int day;

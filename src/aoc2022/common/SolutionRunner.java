@@ -5,6 +5,9 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 
+/**
+ * Can be used to run several solutions in parallel.
+ */
 public class SolutionRunner {
 
     private final SortedMap<Integer, Solution> solutions = new TreeMap<>();
@@ -36,6 +39,12 @@ public class SolutionRunner {
         return true;
     }
 
+    /**
+     * Runs all solutions in parallel asynchronously
+     *
+     * (This means the method will not block and you will need to use allSolved() to check that all solutions have
+     * terminated)
+     */
     public void runAllSolutionsASync() {
         for (Solution solution : solutions.values()) {
             solution.runInThreadWithDefaultInput(this);
@@ -51,6 +60,11 @@ public class SolutionRunner {
         solutions.get(day).runSolutionWithDefaultInput();
     }
 
+    /**
+     * Runs all solutions in parallel synchronously
+     *
+     * (This means the method will block until all solution have terminated)
+     */
     public synchronized void runAllSolutions() {
         runAllSolutionsASync();
         do {

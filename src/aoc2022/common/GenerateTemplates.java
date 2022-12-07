@@ -5,6 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 
+/**
+ * This utility class can be used to generate skeleton code for the solution of each day
+ */
 public class GenerateTemplates {
 
     private final static String classTemplate = ""
@@ -30,12 +33,13 @@ public class GenerateTemplates {
             + "        @Override\n"
             + "        public void runSolution(File input) throws Exception {\n"
             + "            // TODO implement the solution\n"
+            + "            setSolved();\n"
             + "        }\n"
             + "    }\n"
             + "}";
 
     public static void main(String[] args) throws Exception {
-        generateDays(4, 25);
+        generateDays(1, 25);
     }
 
 

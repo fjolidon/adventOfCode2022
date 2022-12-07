@@ -19,6 +19,6 @@ public class GroupLinear extends Group {
             commonMask = RuckSackLinear.getCommonContentMask(commonMask, member.getMask());
         }
 
-        return new Rucksack.Item(Util.log(commonMask));
+        return new Rucksack.Item(Util.binaryLog(commonMask));
     }
 }

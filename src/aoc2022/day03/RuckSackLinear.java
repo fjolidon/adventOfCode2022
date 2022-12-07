@@ -28,7 +28,7 @@ public class RuckSackLinear extends Rucksack {
 
     @Override
     public Item getCommonItem() {
-        return new Item(Util.log(getCommonContentMask(contentMaskFirst, contentMaskSecond, contentMaskFull)));
+        return new Item(Util.binaryLog(getCommonContentMask(contentMaskFirst, contentMaskSecond, contentMaskFull)));
     }
 
     public long getMask() {

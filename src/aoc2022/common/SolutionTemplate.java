@@ -19,6 +19,7 @@ public class SolutionTemplate extends SolutionFactory {
         @Override
         public void runSolution(File input) throws Exception {
             // TODO implement the solution
+            setSolved();
         }
     }
 }

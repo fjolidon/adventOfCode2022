@@ -1,5 +1,9 @@
 package aoc2022.common;
 
+/**
+ * This can be used as an accumulator for solutions when both part are processing the same values but using a different
+ * way to sum them.
+ */
 public class DualCounter {
 
     private int partACount = 0;

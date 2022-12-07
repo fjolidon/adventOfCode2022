@@ -8,6 +8,9 @@ import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 
+/**
+ * Can handle the solution for a given day
+ */
 public abstract class Solution {
 
     private final int day;
@@ -48,7 +51,7 @@ public abstract class Solution {
                 ex.printStackTrace();
             } finally {
                 synchronized (monitor) {
-                    monitor.notify();
+                    monitor.notifyAll();
                 }
             }
         }).start();

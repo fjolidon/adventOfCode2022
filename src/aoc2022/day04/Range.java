@@ -16,6 +16,8 @@ public class Range {
     }
 
     public boolean overlaps(Range range) {
-        return (from >= range.from && from <= range.to) || (to >= range.from && to <= range.to) || (range.from >= from && range.from <= to);
+        return (from >= range.from && from <= range.to)
+                || (to >= range.from && to <= range.to)
+                || (range.from >= from && range.from <= to);
     }
 }

@@ -16,7 +16,7 @@ public class Test {
 
         System.out.println(formatBinary(d));
 
-        System.out.println(Util.log(d));
+        System.out.println(Util.binaryLog(d));
     }
 
     public static String formatBinary(long value) {

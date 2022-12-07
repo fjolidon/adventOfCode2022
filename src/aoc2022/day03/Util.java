@@ -19,25 +19,29 @@ public class Util {
             mask <<= shift;
             shift *= 2;
         }
-
-        System.out.println();
     }
 
     /**
-     * Implementation of integer binary logarithm, basically the reverse operation of multiplying by a power of 2 using
-     * the left shift operator.
-     * @param mask the integer we want to find the logarithmic value of
+     * Implementation of integer binary logarithm
+     *
+     * This is much faster than using Math.log to compute the binary logarithm of an integer.
+     *
+     * Note: this algorithm only works for unsigned integers; Negative values will be considered as positive value in
+     * the range 0x8000000000000000-0xffffffffffffffff
+     *
+     * @param x the integer we want to find the logarithmic value of
      * @return the logarithmic value of the input
      */
-    public static int log(long mask) {
+    public static int binaryLog(long x) {
         int result = 0;
 
         for (int i = LOG_ARRAY_SIZE - 1; i >= 0 ; --i) {
-            if (mask >= LOG_MASKS[i] || (mask < 0)) {
-                mask >>>= LOG_SHIFTS[i];
+            // need to consider negative value as always bigger than the mask
+            if (x >= LOG_MASKS[i] || (x < 0)) {
+                x >>>= LOG_SHIFTS[i];
                 result += LOG_SHIFTS[i];
             }
         }
-        return result + ((int)mask >>> 1);
+        return result + ((int)x >>> 1);
     }
 }
