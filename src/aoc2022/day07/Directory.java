@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class Directory extends AbstractFile {
 
-    private LinkedList<AbstractFile> files = new LinkedList<>();
+    private final LinkedList<AbstractFile> files = new LinkedList<>();
     private int size = -1;
     private final Directory root;
     private boolean finalized = false;

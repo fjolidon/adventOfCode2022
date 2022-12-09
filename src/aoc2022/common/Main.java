@@ -69,7 +69,7 @@ public class Main {
 
         SolutionRunner runner = new SolutionRunner(solutions);
 
-         runner.runAndPrintSolutionForDay(7);
+         runner.runAndPrintSolutionForDay(8);
 
 //        runner.runAllSolutions();
 //        runner.printAllSolutions();
