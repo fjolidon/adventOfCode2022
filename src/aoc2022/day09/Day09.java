@@ -13,14 +13,26 @@ public class Day09 extends SolutionFactory {
     
     private static class DaySolution extends Solution {
 
+        private final Rope rope = new Rope(10);
+
         public DaySolution(int day) {
             super(day);
         }
 
         @Override
         public void runSolution(File input) throws Exception {
-            // TODO implement the solution
+            runForEachLine(input, rope::processInput);
             setSolved();
+        }
+
+        @Override
+        public int getSolutionAInt() {
+            return rope.getVisitedPartA();
+        }
+
+        @Override
+        public int getSolutionBInt() {
+            return rope.getVisitedPartB();
         }
     }
 }
