@@ -13,14 +13,26 @@ public class Day13 extends SolutionFactory {
     
     private static class DaySolution extends Solution {
 
+        private final DistressSignal signal = new DistressSignal();
+
         public DaySolution(int day) {
             super(day);
         }
 
         @Override
         public void runSolution(File input) throws Exception {
-            // TODO implement the solution
+            runForEachLine(input, signal::processInput);
             setSolved();
+        }
+
+        @Override
+        public int getSolutionAInt() {
+            return signal.getPartA();
+        }
+
+        @Override
+        public int getSolutionBInt() {
+            return signal.getPartB();
         }
     }
 }
